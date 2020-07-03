@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- бокс для всіх контейнерів з кнопоками  - відображених і прихованих-->
+    <div class="editing-box">
+        <!--бокс для відображених контейнерів з кнопками -->
+        <div class="options-container">
+            <button type="button" class="btFile btn btn-light" disabled><i class="far fa-file-code"></i></button>
+            <!--контейнер з кнопками для типів тексту: жирний, курсив..-->
+            <div class="btn-group">
+                <button type="button" class="btn btn-light bold"><i class="fas fa-bold"></i></button>
+                <button type="button" class="btn btn-light italic"><i class="fas fa-italic"></i></button>
+                <button type="button" class="btn btn-light underline"><i class="fas fa-underline"></i></button>
+                <button type="button" class="btn btn-light strikethrough"> <i class="fas fa-strikethrough"></i></button>
+            </div>
+            <!--контейнер з кнопками для розташування тексту: зліва, справа..-->
+            <div class="btn-group">
+                <button type="button" class="btn btn-light left"><i class="fas fa-align-left"></i></button>
+                <button type="button" class="btn btn-light center"><i class="fas fa-align-center"></i></button>
+                <button type="button" class="btn btn-light right"><i class="fas fa-align-right"></i></button>
+            </div>
+            <!--контейнер з кнопками для стилів тексту: розмір, колір..-->
+            <div class="btn-group">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle  " data-toggle="dropdown">
+                        <i class="fas fa-font"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="font dropdown-item" style="font-family: Arial;">Arial</div>
+                        <div class="font dropdown-item" style="font-family: Georgia;">Georgia</div>
+                        <div class="font dropdown-item" style="font-family: Impact;">Impact</div>
+                        <div class="font dropdown-item" style="font-family: Times New Roman;">Times New Roman</div>
+                        <div class="font dropdown-item" style="font-family: Verdana;">Verdana</div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle " data-toggle="dropdown">
+                        <i class="fas fa-text-height"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <span class="size dropdown-item" style="font-size: 12px;">12px</span>
+                        <span class="size dropdown-item" style="font-size: 14px;">14px</span>
+                        <span class="size dropdown-item" style="font-size: 16px;">16px</span>
+                        <span class="size dropdown-item" style="font-size: 18px;">18px</span>
+                        <span class="size dropdown-item" style="font-size: 20px;">20px</span>
+                        <span class="size dropdown-item" style="font-size: 22px;">22px</span>
+                        <span class="size dropdown-item" style="font-size: 25px;">25px</span>
+                        <span class="size dropdown-item" style="font-size: 30px;">30px</span>
+
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal"><i
+                        class="fas fa-palette"></i></button>
+                <button type="button" class="bgs btn btn-light"><i class="fas fa-image"></i></button>
+            </div>
+            <button type="button" class="lock btn btn-light"><i class="fas fa-lock"></i></button>
+        </div>
+        <!--прихований контейнер з кнопками для створення таблиці, списків, редагування тексту..-->
+        <div class="btn-group edit-container" style="display: none;">
+            <button type="button" class="save-bt btn btn-light"><i class="fas fa-save"></i></button>
+            <button type="button" class="table-bt btn btn-light"><i class="fas fa-table"></i></button>
+            <button type="button" class="ol-bt btn btn-light"><i class="fas fa-list-ol"></i></button>
+            <button type="button" class="ul-bt btn btn-light"><i class="fas fa-list-ul"></i></button>
+        </div>
+        <!--далі блоки з модальними вікнами ----------------------------------------------------- -->
+        <!-- блок для вибору кольору тексту -->
+        <div class="modal" id="myModal">
+            <div class="select-color">
+                <div class="choose-color">
+                    <span class="close" data-dismiss="modal">&times;</span>
+                    <span style="font-size: 20px; font-family: sans-serif;">Choose text color</span>
+                </div>
+                <div style="border: 1px solid rgb(202, 200, 200);"></div>
+                <div class="color-box" id="clr">
+                    <div class="different-colors" style="background: rgb(107, 209, 175);"></div>
+                    <div class="different-colors" style="background: rgb(54, 153, 120);"></div>
+                    <div class="different-colors" style="background: rgb(32, 189, 97);"></div>
+                    <div class="different-colors" style="background: rgb(10, 131, 56);"></div>
+                    <div class="different-colors" style="background: rgb(12, 145, 185);"></div>
+                    <div class="different-colors" style="background: rgb(93, 129, 170);"></div>
+                    <div class="different-colors" style="background: rgb(169, 65, 196);"></div>
+                    <div class="different-colors" style="background: rgb(104, 64, 128);"></div>
+                    <div class="different-colors" style="background: rgb(41, 54, 88);"></div>
+                    <div class="different-colors" style="background: rgb(38, 45, 66);"></div>
+                    <div class="different-colors" style="background: rgb(255, 232, 127);"></div>
+                    <div class="different-colors" style="background: rgb(255, 204, 127);"></div>
+                    <div class="different-colors" style="background: rgb(243, 160, 52);"></div>
+                    <div class="different-colors" style="background: rgb(247, 142, 128);"></div>
+                    <div class="different-colors" style="background: rgb(199, 87, 13);"></div>
+                    <div class="different-colors" style="background: rgb(211, 37, 7);"></div>
+                    <div class="different-colors" style="background: rgb(242, 247, 245);"></div>
+                    <div class="different-colors" style="background: rgb(213, 216, 215);"></div>
+                    <div class="different-colors" style="background: rgb(172, 177, 175);"></div>
+                    <div class="different-colors" style="background: rgb(102, 105, 104);"></div>
+                    <div class="different-colors" style="background: rgb(2, 2, 2);"></div>
+
+                </div>
+            </div>
+        </div>
+        <!-- блок для вибору background -->
+        <div class="modal2" id="#myModal2">
+            <div class="select-background ">
+                <div class="choose-background">
+                    <span class="close close2 ">&times;</span>
+                    <span style="font-size: 20px; font-family: sans-serif;">Choose background color or image</span>
+                </div>
+
+                <div style="border: 1px solid rgb(202, 200, 200); margin: 10px;"></div>
+                <!--набір лінків для переходу на приховані блоки для background -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" >
+                        <a class="nav-link active" style="font-size: 17px;"  data-toggle="tab" href="#Clr">Colors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style=" font-size: 17px; " data-toggle="tab" href="#img1">Images</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" style="font-size: 17px;" data-toggle="tab" href="#img2">Files</a>
+                    </li>
+                </ul>
+                <!-- блок для вибору background-color-->
+                <div class="tab-content">
+                    <div id="Clr" class="container tab-pane active">
+                        <div class="color-box" id="">
+                            <div class="bgCol" style="background: rgb(107, 209, 175);"></div>
+                            <div class="bgCol" style="background: rgb(54, 153, 120);"></div>
+                            <div class="bgCol" style="background: rgb(32, 189, 97);"></div>
+                            <div class="bgCol" style="background: rgb(10, 131, 56);"></div>
+                            <div class="bgCol" style="background: rgb(12, 145, 185);"></div>
+                            <div class="bgCol" style="background: rgb(93, 129, 170);"></div>
+                            <div class="bgCol" style="background: rgb(169, 65, 196);"></div>
+                            <div class="bgCol" style="background: rgb(104, 64, 128);"></div>
+                            <div class="bgCol" style="background: rgb(41, 54, 88);"></div>
+                            <div class="bgCol" style="background: rgb(38, 45, 66);"></div>
+                            <div class="bgCol" style="background: rgb(255, 232, 127);"></div>
+                            <div class="bgCol" style="background: rgb(255, 204, 127);"></div>
+                            <div class="bgCol" style="background: rgb(243, 160, 52);"></div>
+                            <div class="bgCol" style="background: rgb(247, 142, 128);"></div>
+                            <div class="bgCol" style="background: rgb(199, 87, 13);"></div>
+                            <div class="bgCol" style="background: rgb(211, 37, 7);"></div>
+                            <div class="bgCol" style="background: rgb(242, 247, 245);"></div>
+                            <div class="bgCol" style="background: rgb(213, 216, 215);"></div>
+                            <div class="bgCol" style="background: rgb(172, 177, 175);"></div>
+                            <div class="bgCol" style="background: rgb(102, 105, 104);"></div>
+                            <div class="bgCol" style="background: rgb(2, 2, 2);"></div>
+
+                        </div>
+                    </div>
+                    <!-- блок для вибору background-image-->
+                    <div id="img1" class="container tab-pane fade">
+                        <div class="image-box">
+                            <div class="different-images" style="background: url('images/1.jpeg'); background-size: 100% 100%;"></div>
+                            <div class="different-images" style="background: url('images/2.jpeg'); background-size: 100% 100%;"></div>
+                            <div class="different-images" style="background: url('images/3.jpeg'); background-size: 100% 100%;"></div>
+                            <div class="different-images" style="background: url('images/4.jpeg'); background-size: 100% 100%;"></div>
+                            <div class="different-images" style="background: url('images/5.jpeg'); background-size: 100% 100%;"></div>
+                            <div class="different-images" style="background: url('images/6.jpeg'); background-size: 100% 100%;"></div>
+                            <div class="different-images" style="background: url('images/7.jpeg'); background-size: 100% 100%;"></div>
+                            <div class="different-images" style="background: url('images/8.jpeg'); background-size: 100% 100%;"></div>
+                            <div class="different-images" style="background: url('images/9.jpeg'); background-size: 100% 100%;"></div>
+                        </div>
+                    </div>
+                    <!-- блок для загрузки файлу для background-image-->
+                    <div id="img2" class="container tab-pane fade">
+                        <div class="file-box">
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input in" id="inputGroupFile01" value="">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- блок для sign in -->
+    <div class="modal3">
+        <div class="signIn-modal">
+            <h2 style="margin: 15px auto;">Sign In</h2>
+            <div style=" border: 1px solid rgb(223, 220, 220); width: 100%; margin: 10px;"></div>
+            <form action="" class="f1">
+                <div class="inp-box">
+                    <input type="text" placeholder="Login here.." class="login" value="">
+                    <input type="password" placeholder="Password here.." class="password" value="">
+                    <div class="check-data" style="display: none;">Value is empty</div>
+                    <button type="button" class="btn btn-secondary btn-sign">Sign In</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <!-- блок для sign out  -->
+    <div class="modal7">
+        <div class="signOut-modal">
+                    <button type="button" class="btn btn-dark cancel">cancel</button>
+                    <button type="button" class="btn btn-danger btn-sign-out">sign out</button>
+        </div>
+    </div>
+    <!-- textarea для редагування тексту -->
+    <textarea class="area" name="" id="" cols="30" rows="10" style="display: none;">jghfgfdfsd
+    </textarea>
+    <!-- блок з формою для створення таблиці -->
+    <div class="modal4">
+        <div class="table-block">
+            <div class="cr-tab-title">
+                <span class="close close4">&times;</span>
+                <span style="font-size: 20px; font-family: sans-serif;">Create table</span>
+                <hr>
+            </div>
+            <div class="cr-tab-container">
+                <form action="" class="f4" name="formCreateTable">
+                    <div class="inp-row1">
+                        <div class="inp-column">
+                            <label for="row1-first">Count TR:</label>
+                            <input type="text" name="countTr" id="row1-first" class="inp-tab inp-tab1"
+                                placeholder="Type here..">
+                        </div>
+                        <div class="inp-column">
+                            <label for="row1-second">Count TD:</label>
+                            <input type="text" name="countTd" id="row1-second" class="inp-tab inp-tab2"
+                                placeholder="Type here..">
+                        </div>
+                    </div>
+                    <div class="inp-row2">
+                        <div class="inp-column">
+                            <label for="row2-first">Width of TD:</label>
+                            <input type="text" name="widthTD" id="row2-first" class="inp-tab inp-tab3"
+                                placeholder="Type here..">
+                        </div>
+                        <div class="inp-column">
+                            <label for="row2-second">Height of TD:</label>
+                            <input type="text" name="heightTD" id="row2-second" class="inp-tab inp-tab4"
+                                placeholder="Type here..">
+                        </div>
+                    </div>
+                    <div class="inp-row3" style="height: 70px; margin-bottom: 5px;">
+                        <div class="inp-column3">
+                            <label for="row3-first">Width of border:</label>
+                            <input type="text" name="widthBd" id="row3-first" class="inp-tab-row3 inp-tab inp-tab5"
+                                placeholder="Type here..">
+                        </div>
+                        <div class="inp-column3">
+                            <label for="row3-second">Style of border:</label>
+                            <select name="styleBd" id="row3-second" class="select1-tab-row3">
+                                <option value="">Choose style</option>
+                                <option value="dotted">dotted</option>
+                                <option value="dashed">dashed</option>
+                                <option value="solid">solid</option>
+                                <option value="double">double</option>
+                                <option value="groove">groove</option>
+                                <option value="ridge">ridge</option>
+                                <option value="inset">inset</option>
+                                <option value="outset">outset</option>
+                            </select>
+                        </div>
+                        <div class="inp-column3">
+                            <label for="row3-third">Color of border:</label>
+                            <select name="colorBd" id="row3-third" class="select2-tab-row3">
+                                <option value="">Choose color</option>
+                                <option value="black">black</option>
+                                <option value="red">red</option>
+                                <option value="green">green</option>
+                                <option value="yellow">yellow</option>
+                                <option value="teal">teal</option>
+                                <option value="gray">gray</option>
+                                <option value="pink">pink</option>
+                            </select>
+                        </div>
+                    </div>
+                    <span class="mes-tab-form"
+                        style="color: red; margin-top: -20px; margin-bottom: -20px; display: none;">Invalid value</span>
+                    <div class="inp-row4" style="margin-top: -2px;">
+                        <button type="button" class="btn btn-danger bt-reset-tb">reset</button>
+                        <button type="button" class="btn btn-success bt-create-tb">Create table</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- блок з формою для створення ol -->
+    <div class="modal5">
+        <div class="ol-block">
+            <div class="cr-ol-title">
+                <span class="close close5">&times;</span>
+                <span style="font-size: 20px; font-family: sans-serif;">Create Ol</span>
+                <br>
+                <div style="border: 1px solid rgb(202, 200, 200);"></div>
+            </div>
+            <form action="" name="formCreateOlList">
+                <div class="cr-ol-container">
+
+                    <div class="inp-column">
+                        <label for="row1-first">Count li item:</label>
+                        <input type="text" name="countLiOl" id="row1-first" class="inp-ol-count">
+                    </div>
+                    <div class="inp-column">
+                        <label for="row1-second">Type mark of list:</label>
+                        <select type="text" name="typeMrOl" id="row1-second" class="sel-ol-type">
+                            <option value="">Choose Ol type mark</option>
+                            <option value="1">1</option>
+                            <option value="I">I</option>
+                            <option value="i">i</option>
+                            <option value="A">A</option>
+                            <option value="a">a</option>
+                        </select>
+                    </div>
+                    <span class="mes-ol-form"
+                        style="color: red; margin-top: 0px; margin-bottom: -20px; padding-left: 0px; display: none;">Invalid
+                        value</span>
+
+                    <div class="inp-row4">
+                        <button type="button" class="btn btn-danger bt-reset-ol">reset</button>
+                        <button type="button" class="btn btn-success bt-create-ol">create ol</button>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- блок з формою для створення ul -->
+    <div class="modal6">
+        <div class="ul-block">
+            <div class="cr-ul-title">
+                <span class="close close6">&times;</span>
+                <span style="font-size: 20px; font-family: sans-serif;">Create Ul</span>
+                <br>
+                <div style="border: 1px solid rgb(202, 200, 200);"></div>
+            </div>
+            <form action="" name="formCreateUlList">
+                <div class="cr-ul-container">
+
+                    <div class="inp-column">
+                        <label for="row1-first">Count of li:</label>
+                        <input type="text" name="countLiUl" id="row1-first" class="inp-ul-count">
+                    </div>
+                    <div class="inp-column">
+                        <label for="row1-second">Type mark of list:</label>
+                        <select type="text" name="typeMrUl" id="row1-second" class="sel-ul-type">
+                            <option value="">Choose Ul type mark</option>
+                            <option value="circle">circle</option>
+                            <option value="disc">disc</option>
+                            <option value="square">square</option>
+                        </select>
+                    </div>
+                    <span class="mes-ul-form"
+                        style="color: red; margin-top: 0px; margin-bottom: -20px; padding-left: 0px; display: none;">Invalid
+                        value</span>
+
+                    <div class="inp-row4">
+                        <button type="button" class="btn btn-danger bt-reset-ul">reset</button>
+                        <button type="button" class="btn btn-success bt-create-ul">create ul</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-box">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore unde accusant.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore unde accusant.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore unde accusant.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore unde accusant.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore unde accusant.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore unde accusant.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore unde accusant.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
